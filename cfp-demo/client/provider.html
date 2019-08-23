@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css\style.css">
+</head>
+
+<body class="bg-dark">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="pb-2 mb-2 border-bottom header">
+                    <a href="index.html">
+                        <img src="img\nest.svg" class="logo" alt="logo">
+                        NestJS
+                    </a>
+                    <img src="img\nestCat.jpg" class="cat" alt="logo">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card m-2 mx-auto sectionCard" style="width: 90%;">
+                    <h4 class="card-header">Providers</h4>
+                    <div class="card-body">
+                        <img src="img\service.png" alt="" class="sectionImg">
+                        <p class="sectionTxt">
+                            Providers are a fundamental concept in Nest. Many of the basic Nest classes may be treated
+                            as a provider – services, repositories, factories, helpers, and so on. The main idea of a
+                            provider is that it can inject dependencies; this means objects can create various
+                            relationships with each other, and the function of "wiring up" instances of objects can
+                            largely be delegated to the Nest runtime system. A provider is simply a class annotated with
+                            an @Injectable() decorator.
+                        </p>
+                        <br>
+                        <br>
+                        <br>
+                        <p class="sectionTxt">
+                            <h5>Dependency injection</h5>
+                            <br>
+                            Nest is built around the strong design pattern commonly known as Dependency injection.
+
+                            In Nest, thanks to TypeScript capabilities, it's extremely easy to manage dependencies
+                            because they are resolved just by type.
+                            <br>
+                            Nest will resolve a service by creating and returning an instance of this service (or, in
+                            the normal case of
+                            a singleton, returning the existing instance if it has already been requested elsewhere).
+                            This dependency is resolved and passed to controller's constructor (or assigned to the
+                            indicated property).
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

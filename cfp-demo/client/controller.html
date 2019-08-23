@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css\style.css">
+</head>
+
+<body class="bg-dark">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="pb-2 mb-2 border-bottom header">
+                    <a href="index.html">
+                        <img src="img\nest.svg" class="logo" alt="logo">
+                        NestJS
+                    </a>
+                    <img src="img\nestCat.jpg" class="cat" alt="logo">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card m-2 mx-auto sectionCard" style="width: 90%;">
+                    <h4 class="card-header">Controllers</h4>
+                    <div class="card-body">
+                        <img src="img\controller.png" alt="" class="sectionImg">
+                        <p class="sectionTxt">
+                            Controllers are responsible for handling incoming requests and returning responses to the
+                            client.
+                            <br>
+                            The @Controller() decorator is required to define a basic controller.
+                        </p>
+                        <br>
+                        <br>
+                        <p class="sectionTxt">
+                            A controller's purpose is to receive specific requests for the application. The routing
+                            mechanism controls which controller receives which requests. Frequently, each controller has
+                            more than one route, and different routes can perform different actions.
+                            <br>
+                            In order to create a basic controller, we use classes and decorators. Decorators associate
+                            classes with required metadata and enable Nest to create a routing map (tie requests to the
+                            corresponding controllers).
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
