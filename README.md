@@ -1,5 +1,5 @@
 # curso-programacion-fullstack-backend
-Ejercicios y practicas de backend con nestJS
+Ejercicios y prácticas de backend con nestJS.
 
 ***
 
