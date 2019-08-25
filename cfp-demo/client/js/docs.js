@@ -215,5 +215,4 @@ function byTemaMasTratado() {
             targetDiv.innerHTML += `Tema: ${tema[0]} - Cantidad de veces tratado: ${tema[1]}<br>`
         }
     });
-    console.log(temas);
 }

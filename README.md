@@ -23,7 +23,7 @@ Ejercicios y prácticas de backend con nestJS.
     - Crear un mini sitio web con dos o tres archivos HTML y que se naveguen entre sí.
 
           cd cfp-demo
-    Intall dependencies:
+    Isntall dependencies:
     
         npm i
     Start server:
