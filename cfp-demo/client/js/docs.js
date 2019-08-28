@@ -1,42 +1,3 @@
-let documentos = [/* {
-    "titulo": "Prendete 2019",
-    "autor": "Julio Gomez",
-    "temas": [
-        "ciencia",
-        "tecnologia",
-        "ideas",
-        "tandil"
-    ],
-    "fecha": "24/8/2018"
-},
-{
-    "titulo": "Se viene el calor en Tandil?",
-    "autor": "Miguel Casco",
-    "temas": [
-        "clima",
-        "tandil"
-    ],
-    "fecha": "24/8/2017",
-},
-{
-    "titulo": "Los argentinos deberán pagar para ingresar a Europa a partir de 2021",
-    "autor": "Julio Gomez",
-    "temas": [
-        "turismo"
-    ],
-    "fecha": "20/8/2019"
-},
-{
-    "titulo": "El humo de los incendios en el Amazonas podría llegar a Tandil en los próximos días",
-    "autor": "Carlos Lopez",
-    "temas": [
-        "ecologia",
-        "tandil"
-    ],
-    "fecha": "23/8/2019"
-} */
-]
-
 let targetDiv = document.querySelector('#target');
 
 let agregar = document.querySelector('#agregar');
@@ -59,6 +20,17 @@ btnMasAntiguo.addEventListener('click', buscarMasAntiguo);
 
 let btnMasTratado = document.querySelector('#masTema');
 btnMasTratado.addEventListener('click', byTemaMasTratado);
+
+let documentos = [];
+
+async function load(){
+    let r = await fetch("js/mock.json");
+    let json = await r.json();
+    documentos = json;
+    mostrarDocumentos();
+  }
+  
+load();
 
 function add() {
     let autor = document.querySelector('#autor');
