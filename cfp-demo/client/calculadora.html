@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        td {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="number" placeholder="operando" id="op1">
+    <select name="" id="operador">
+        <option value="+">Sumar</option>
+        <option value="-">Restar</option>
+        <option value="*">Multiplicar</option>
+        <option value="@">Dividir</option>
+        <option value="^">Potencia</option>
+    </select>
+    <input type="number" placeholder="operando" id="op2">
+    <button id="calcular">Calcular</button>
+    <br><br>
+    <table border="1">
+        <thead>
+            <td>Valor 1</td>
+            <td>Operación</td>
+            <td>Valor 2</td>
+            <td>Resultado</td>
+        </thead>
+        <tbody id="resultados">
+
+        </tbody>
+    </table>
+
+    <script src="js/calculadora.js"></script>
+</body>
+
+</html>
