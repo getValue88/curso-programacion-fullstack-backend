@@ -11,12 +11,11 @@ load();
 
 async function load() {
     let posicion = document.querySelector('#posicion').value;
-    let p = posicion.split(" ");
     document.querySelector('#posicion').value = "";
     let r = null;
 
     if (posicion != "") {
-        r = await fetch(`/producto/${p[0]}/${p[1]}/${p[2]}/${p[3]}`);
+        r = await fetch(`/producto/${posicion}`);
     } else {
         r = await fetch("/producto");
     }
@@ -32,7 +31,7 @@ function agregar() {
     let descripcion = document.querySelector('#descripcion').value;
 
     let renglon = {
-        "producto_nombre": producto,
+        "nombreProducto": producto,
         "precio": precio,
         "desc": descripcion
     }
@@ -61,7 +60,7 @@ function mostrarTablaCompras() {
     html = "";
     for (let r of compras) {
         html += `<tr>
-                    <td>${r.producto_nombre}</td>
+                    <td>${r.nombreProducto}</td>
                     <td>$${r.precio}</td>
                     <td>${r.desc}</td>
                  </tr>`;
@@ -73,12 +72,17 @@ function mostrarTablaCompras() {
 async function posicion() {
     try {
         let posicion = document.querySelector('#posicion').value;
-        let p = posicion.split(" ");
         document.querySelector('#posicion').value = "";
-        let r = await fetch(`/producto/${p[0]}/${p[1]}/${p[2]}/${p[3]}`);
+        let r = await fetch(`/producto/${posicion}`);
         let json = await r.json();
-        compras = json;
-        mostrarTablaCompras();
+        console.log(json)
+        compra = json;
+        html = `<tr>
+                    <td>${compra.nombreProducto}</td>
+                    <td>$${compra.precio}</td>
+                    <td>${compra.desc}</td>
+                 </tr>`;
+    document.querySelector("#tblCompras").innerHTML = html;
     } catch (err) {
         alert(err.message);
     }
