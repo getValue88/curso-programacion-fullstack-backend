@@ -1,0 +1,36 @@
+label {
+    color: white;
+}
+
+.full-bg-img {
+    height: 100%;
+    background-image: url("../img/car.jpg");
+    background-position: center top;
+    background-size: 100% auto;
+}
+
+.intro-2 {
+    height: 100px;
+}
+
+.btnElimPorPos {
+    float: right;
+}
+
+.btnEditPorPos{
+ float: left;
+}
+
+.oculto {
+    visibility: hidden;
+}
+
+table {
+    text-align: center;
+}
+
+.formulario{
+width: 95%;
+margin: auto;
+padding: 0 2.5%;
+}

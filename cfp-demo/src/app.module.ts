@@ -8,6 +8,8 @@ import { ProductoController } from'./producto/producto.controller';
 import { ProductoService } from'./producto/producto.service';
 import { CalculadoraController } from './calculadora/calculadora.controller';
 import { CalculadoraService } from './calculadora/calculadora.service';
+import { ConcesionariaController} from './concesionaria/concesionaria.controller';
+import { ConcesionariaService } from './concesionaria/concesionaria.service';
 
 
 @Module({
@@ -16,7 +18,7 @@ import { CalculadoraService } from './calculadora/calculadora.service';
       rootPath: join(__dirname, '..', 'client'),
     }),
   ],
-  controllers: [AppController, ProductoController, CalculadoraController],
-  providers: [AppService, ProductoService, CalculadoraService],
+  controllers: [AppController, ProductoController, CalculadoraController,ConcesionariaController],
+  providers: [AppService, ProductoService, CalculadoraService,ConcesionariaService],
 })
 export class AppModule { }

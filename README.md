@@ -2,6 +2,14 @@
 Ejercicios y prácticas de backend con nestJS.
 
 ***
+## \# 21/09/2019
+
+5. **Ejercicio: Concesionaria**
+    - Desarrollar:
+        - Servidor que ofrezca una API para dar de alta,baja,modifiación y consulta de autos y camionetas. Debe poder persistir dicha información.
+        - Front-end que sea capaz de interactuar con la API.
+        - Preparar una breve exposición para presentar en clase explicando el funcionamiento e implementación del sistema.
+
 ## \# 30/08/2019
 
 4. **Ejercicio**
