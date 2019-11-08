@@ -1,8 +1,20 @@
+import { Column, Entity, PrimaryGeneratedColumn} from'typeorm';
+
+@Entity('vehicle')
 export default abstract class Vehiculo {
+    @Column()
     private marca: string;
+
+    @Column()
     private modelo: string;
+
+    @Column()
     private año: number;
+
+    @PrimaryGeneratedColumn()
     private patente: string;
+
+    @Column()
     private precio: number;
 
     public constructor(marca: string, modelo: string, año: number, patente: string, precio: number) {

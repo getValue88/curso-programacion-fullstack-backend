@@ -1,15 +1,17 @@
 import { Injectable } from '@nestjs/common';
-import Vehiculo from './vehiculo';
-import Auto from './auto';
-import Camioneta from './camioneta';
+import Vehiculo from './entities/vehiculo.entity';
+import Auto from './entities/auto.entity';
+import Camioneta from './entities/camioneta.entity';
 import * as fs from 'fs';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class ConcesionariaService {
     private vehiculos: Vehiculo[] = [];
 
-    constructor() {
-        this.load();
+    constructor(@InjectRepository(Vehiculo)private readonly vehicleRepository: Repository<Vehiculo>) {
+        // this.load();
     }
 
     public getAll(): Vehiculo[] {
@@ -148,5 +150,9 @@ export class ConcesionariaService {
             throw new Error("Error al sobrescribir base de datos");
         }
     }
+
+  /*   findAll(): Promise<Vehiculo[]> {
+        return this.vehicleRepository.find();
+      } */
 
 }

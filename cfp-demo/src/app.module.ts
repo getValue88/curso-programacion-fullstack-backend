@@ -3,13 +3,13 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ServeStaticModule } from '@nestjs/serve-static'
 import { join } from 'path';
-
+import { TypeOrmModule } from'@nestjs/typeorm';
 import { ProductoController } from'./producto/producto.controller';
 import { ProductoService } from'./producto/producto.service';
 import { CalculadoraController } from './calculadora/calculadora.controller';
 import { CalculadoraService } from './calculadora/calculadora.service';
-import { ConcesionariaController} from './concesionaria/concesionaria.controller';
-import { ConcesionariaService } from './concesionaria/concesionaria.service';
+import { VehiculosModule } from './concesionaria/vehiculos/vehiculos.module';
+
 
 
 @Module({
@@ -17,8 +17,13 @@ import { ConcesionariaService } from './concesionaria/concesionaria.service';
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'client'),
     }),
+    TypeOrmModule.forRoot(),
+    VehiculosModule,
   ],
-  controllers: [AppController, ProductoController, CalculadoraController,ConcesionariaController],
-  providers: [AppService, ProductoService, CalculadoraService,ConcesionariaService],
+  controllers: [AppController, ProductoController, CalculadoraController],
+  providers: [AppService, ProductoService, CalculadoraService],
+  exports:[]
 })
-export class AppModule { }
+export class AppModule { 
+
+}
