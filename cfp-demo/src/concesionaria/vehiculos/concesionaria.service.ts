@@ -20,22 +20,26 @@ export class ConcesionariaService {
     public async create(vehiculoDto: VehiculoDto): Promise<Vehiculo[]> {
         let newVehiculo;
         if (vehiculoDto['tipo'] == 'Auto') {
-            newVehiculo = new Auto(vehiculoDto['tipo'],
+            newVehiculo = new Auto(
+            vehiculoDto['tipo'],
             vehiculoDto['marca'],
             vehiculoDto['modelo'],
             vehiculoDto['año'],
             vehiculoDto['patente'],
             vehiculoDto['precio'],
-            parseInt(vehiculoDto['capacidadBaul']));
+            parseInt(vehiculoDto['capacidadBaul'])
+            );
         }
         if (vehiculoDto['tipo'] == 'Camioneta') {
-            newVehiculo = new Camioneta(vehiculoDto['tipo'],
+            newVehiculo = new Camioneta(
+            vehiculoDto['tipo'],
             vehiculoDto['marca'],
             vehiculoDto['modelo'],
             vehiculoDto['año'],
             vehiculoDto['patente'],
             vehiculoDto['precio'],
-            parseInt(vehiculoDto['capacidadCarga']));
+            parseInt(vehiculoDto['capacidadCarga'])
+            );
         }
         await this.vehicleRepository.save(newVehiculo);
         return await this.vehicleRepository.find();

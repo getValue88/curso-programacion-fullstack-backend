@@ -6,7 +6,7 @@ btnAgregar.addEventListener('click', agregar);
 let btnAutos = document.querySelector('#autos');
 btnAutos.addEventListener('click', () => {
     limpiarCampos();
-    btnAgregar.innerHTML="Agregar";
+    btnAgregar.innerHTML = "Agregar";
     btnAgregar.removeAttribute('idx');
     mostrarPorTipo('auto');
 });
@@ -15,7 +15,7 @@ btnAutos.addEventListener('click', () => {
 let btnCamionetas = document.querySelector('#camionetas');
 btnCamionetas.addEventListener('click', () => {
     limpiarCampos();
-    btnAgregar.innerHTML="Agregar";
+    btnAgregar.innerHTML = "Agregar";
     btnAgregar.removeAttribute('idx');
     mostrarPorTipo('camioneta');
 });
@@ -28,7 +28,7 @@ btnTodos.addEventListener('click', load);
 let btnBuscarUno = document.querySelector('#buscarUno');
 btnBuscarUno.addEventListener('click', () => {
     limpiarCampos();
-    btnAgregar.innerHTML="Agregar";
+    btnAgregar.innerHTML = "Agregar";
     btnAgregar.removeAttribute('idx');
 
     let btnEdit = document.querySelectorAll(".btnEditPorPos");
@@ -45,15 +45,15 @@ btnBuscarUno.addEventListener('click', () => {
 let btnConsultar = document.querySelector('#consultar');
 btnConsultar.addEventListener('click', () => {
     limpiarCampos();
-    btnAgregar.innerHTML="Agregar";
+    btnAgregar.innerHTML = "Agregar";
     btnAgregar.removeAttribute('idx');
-    
+
     btnBuscarUno.classList.remove('d-none');
     document.querySelector('#buscarPorIndice').classList.add('d-none');
     document.querySelector('#consultar').classList.add('d-none');
 
-    let index = document.querySelector('#buscarPorIndice').value;
-    consultar(index);
+    let patente = document.querySelector('#buscarPorIndice').value;
+    consultar(patente);
 });
 
 let vehiculos = [];
@@ -64,13 +64,11 @@ DIBUJA TABLA CON ELEMENTOS EN MEMORIA DEL ARRAY VEHICULOS
 DIBUJA BOTON "E"(editar) para cada fila (contiene los valores de todos los campos de dicha fila y el tipo de objeto + una id unica).
 DIBUJA BOTON "B"(borrar) para cada fila (contiene una id unica).
  */
-function mostrarVehiculos(index) {
+function mostrarVehiculos(patente) {
     try {
         html = "";
         let cap;
         let i = 0;
-        if (index != null)
-            i = parseInt(index) - 1;
 
         for (let r of vehiculos) {
             if (r != null) {
@@ -92,8 +90,8 @@ function mostrarVehiculos(index) {
                             <td>${parseInt(r.precio)}</td>
                             <td>${parseInt(cap)}</td>
                             <td class="action">
-                                <button type="button" class="btnEditPorPos btn-warning" idx=${i} datos=${tipo},${r.marca},${r.modelo},${r.año},${r.patente},${r.precio},${cap}>E</button>
-                                <button type="button" class="btnElimPorPos btn-danger" idx=${i}>B</button>
+                                <button type="button" class="btnEditPorPos btn-warning" idx=${r.patente} datos=${tipo},${r.marca},${r.modelo},${r.año},${r.patente},${r.precio},${cap}>E</button>
+                                <button type="button" class="btnElimPorPos btn-danger" idx=${r.patente}>B</button>
                             </td>
                         </tr>`;
                 i++;
@@ -120,7 +118,7 @@ function mostrarVehiculos(index) {
 //TOMA LOS VALORES DE TODOS LOS INPUTS Y CREA UN JSON:
 //SI EL BOTON TIENE ATRIBUTO "IDX", LLAMA A FUNCION AUXILIAR PARA HACER PUT, LE PASA EL JSON Y LA POSICION. ELIMINA EL IDX Y CAMBIA EL TEXTO A "AGREGAR"
 //SI EL BOTON NO TIENE ATRIBUTO "IDX", LLAMA A FUNCION AUXILIAR PARA HACER POST PASANDOLE EL JSON
-function agregar() {
+async function agregar() {
     let select = document.querySelector('#tipo');
     select.classList.remove('is-invalid');
     let inputs = document.querySelectorAll('.form-group input');
@@ -163,11 +161,11 @@ function agregar() {
             }
 
             if (btnAgregar.getAttribute('idx')) {
-                modificarEnServidor(newVehiculo, btnAgregar.getAttribute('idx'));
+                await modificarEnServidor(newVehiculo, btnAgregar.getAttribute('idx'));
                 btnAgregar.removeAttribute('idx');
                 btnAgregar.innerHTML = "Agregar";
             } else {
-                agregarAServidor(newVehiculo);
+                await agregarAServidor(newVehiculo);
             }
             load();
 
@@ -214,7 +212,7 @@ async function mostrarPorTipo(tipo) {
 // OBTIENE EL IDX DEL BOTON CLICKEADO Y SE LO PASA A LA FUNCION ELIMINARDESERVIDOR
 function eliminarPosicion() {
     limpiarCampos();
-    btnAgregar.innerHTML="Agregar";
+    btnAgregar.innerHTML = "Agregar";
     btnAgregar.removeAttribute('idx');
     let posicion = this.getAttribute("idx");
     if (!eliminarDeServidor(posicion))
@@ -297,9 +295,9 @@ async function eliminarDeServidor(posicion) {
 }
 
 //FETCH AL METODO UPDATE DE LA API (@PUT)
-async function modificarEnServidor(registro, posicion) {
+async function modificarEnServidor(registro, patente) {
     try {
-        let r = await fetch(`/concesionaria/${posicion}`, {
+        let r = await fetch(`/concesionaria/${patente}`, {
             "method": "PUT",
             "headers": { "Content-Type": "application/json" },
             "body": JSON.stringify(registro)
@@ -312,13 +310,13 @@ async function modificarEnServidor(registro, posicion) {
 }
 
 //FECTCH AL METODO GETONE DE LA API (@GET POS/:INDEX)
-async function consultar(index) {
-    let r = await fetch(`concesionaria/pos/${index}`);
+async function consultar(patente) {
+    let r = await fetch(`concesionaria/patente/${patente}`);
     try {
         let json = await r.json();
         vehiculos = [];
         vehiculos.push(json);
-        mostrarVehiculos(index);
+        mostrarVehiculos(patente);
         disableActions();
     } catch (err) {
         alert("Indice incorrecto");

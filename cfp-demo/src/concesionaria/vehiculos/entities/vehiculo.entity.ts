@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryColumn } from 'typeorm';
 
 @Entity('vehicle')
 export default abstract class Vehiculo {
@@ -14,7 +14,7 @@ export default abstract class Vehiculo {
     @Column()
     private año: number;
 
-    @PrimaryGeneratedColumn()
+    @PrimaryColumn()
     private patente: string;
 
     @Column()
