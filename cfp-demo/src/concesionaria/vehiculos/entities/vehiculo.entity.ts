@@ -1,7 +1,10 @@
-import { Column, Entity, PrimaryGeneratedColumn} from'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('vehicle')
 export default abstract class Vehiculo {
+    @Column({ nullable: true })
+    private tipo?: string;
+
     @Column()
     private marca: string;
 
@@ -17,7 +20,11 @@ export default abstract class Vehiculo {
     @Column()
     private precio: number;
 
-    public constructor(marca: string, modelo: string, año: number, patente: string, precio: number) {
+    @Column({ nullable: true })
+    private capacidad: number;
+
+    public constructor(tipo:string,marca: string, modelo: string, año: number, patente: string, precio: number) {
+        this.tipo = tipo;
         this.marca = marca;
         this.modelo = modelo;
         this.año = año;

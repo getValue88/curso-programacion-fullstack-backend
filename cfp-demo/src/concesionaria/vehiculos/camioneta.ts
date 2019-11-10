@@ -1,14 +1,11 @@
-import Vehiculo from "./vehiculo.entity";
-import { Column, Entity, PrimaryGeneratedColumn} from'typeorm';
+import Vehiculo from "./entities/vehiculo.entity";
 
-@Entity()
 export default class Camioneta extends Vehiculo {
 
-    @Column()
     private capacidadCarga: number
 
-    public constructor(marca: string, modelo: string, año: number, patente: string, precio: number, capacidadCarga: number) {
-        super(marca, modelo, año, patente, precio);
+    public constructor(tipo:string,marca: string, modelo: string, año: number, patente: string, precio: number, capacidadCarga: number) {
+        super(tipo,marca, modelo, año, patente, precio);
         this.capacidadCarga = capacidadCarga;
     }
 
